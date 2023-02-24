@@ -4,8 +4,66 @@ Name:
 
 ## Step by step
 
-Layout without signalling:
-![alt text](Figure0.svg)
+The signalling generation process used in this work was designed following signalling principles defined by Transport for New South Wales (TfNSW). These principles are based on the concepts defined by the Institution of Railway Signal Engineers (IRSE), the Rail Industry Safety and Standards Board (RISSB). These principles include: 
+
+(P1) Having a limited right-to-use (henceforth ”authority”) to one rail element or set of elements.
+
+(P2) Allowing/Denying movement authorities unambiguously.
+
+(P3) Warning train drivers about dangers with enough time to react.
+
+(P4) Enough granularity to support train operations.
+
+(P5) Warning train drivers about the end of the network.
+
+(P6) Waning train drivers about any movable infrastructure such as switches or level crossings or static such as platforms.
+
+(P7) Avoiding train blocking facilities or branches whenever it is possible.
+
+### A. Import the railway layout description
+
+Its imports a railway network without signalling from: C:\PhD\RailML\Layouts\Example_5\Example_5.railml
+
+The necessary information to define the graph network is distributed across several sections of the railML file, specifically inside netElements (nodes) and netRelations (edges) items found in the class Infrastructure/Topology.
+
+![Figure 1](Figure0.svg "Figure 1")
+
+### B. Define a graph network to associate the railway elements
+
+The positional information found there can be used to identify straight tracks and curves.
+
+A railway network can be defined as a set of rail tracks that are connected to each other. Only the networks that fulfil the following rules will be considered a valid railway network for the current specification of the RNA, otherwise, the network will be rejected and the analysis will be aborted:
+
+- Every track is defined between two points.
+- Two tracks with a common point are connected.
+- Each track is connected at least at one of its ends to
+another track or a switch.
+- The length of a track is within a minimum and a maximum given value.
+- A connected region is made up of at least 3 tracks (we
+named it a “zone”).
+- There is at least one zone in the railway network.
+- Two zones connected with a track make one zone.
+
+The result of this step is: ![Figure 2](step_B.png "Figure 2")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Signals generated due to line borders(L) and buffer stops(T):
 ![alt text](Figure1.svg)
 Signals generated due to line borders(L),buffer stops(T) and rail joints (J):
