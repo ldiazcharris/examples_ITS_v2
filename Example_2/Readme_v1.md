@@ -1,8 +1,10 @@
-# Example_5
-## Description
-Name: 
+# Example 2
 
-## Step by step
+## Description
+
+Name: SimpleExample.railAID
+
+## Analysis principles
 
 The signalling generation process used in this work was designed following signalling principles defined by Transport for New South Wales (TfNSW). These principles are based on the concepts defined by the Institution of Railway Signal Engineers (IRSE), the Rail Industry Safety and Standards Board (RISSB). These principles include: 
 
@@ -20,9 +22,31 @@ The signalling generation process used in this work was designed following signa
 
 (P7) Avoiding train blocking facilities or branches whenever it is possible.
 
+## Step by step
+
+The following is the general methodology or "step by step" followed for the analysis of a railway network.
+
+A. Import the railway layout description.
+
+B. Define a graph network to associate the railway elements.
+
+C. Reveal additional railway element functionality by infraestructure analysis.
+
+D. Detect CDL zones.
+
+E. Generate signalling.
+
+F. Simplify signalling.
+
+G. Export a resulting railway layout description.
+
+Each step is explained below.
+
 ### A. Import the railway layout description
 
-Its imports a railway network without signalling from: C:\PhD\RailML\Layouts\Example_5\Example_5.railml
+Its imports a railway network without signalling from: C:\PhD\RailML\Layouts\Example_2\Example_2.railml. For a further explanation of the reason for this route, go to the following <a href="https://github.com/GICSAFePhD/Layouts">Link</a> in seccion "Usage".
+
+In Figure 1 it can see the train network without signalling.
 
 The necessary information to define the graph network is distributed across several sections of the railML file, specifically inside netElements (nodes) and netRelations (edges) items found in the class Infrastructure/Topology.
 
@@ -30,7 +54,7 @@ The necessary information to define the graph network is distributed across seve
 
 ### B. Define a graph network to associate the railway elements
 
-The positional information found there can be used to identify straight tracks and curves.
+The positional information found in the network defined in format RailML can be used to identify straight tracks and curves.
 
 A railway network can be defined as a set of rail tracks that are connected to each other. Only the networks that fulfil the following rules will be considered a valid railway network for the current specification of the RNA, otherwise, the network will be rejected and the analysis will be aborted:
 
@@ -71,27 +95,36 @@ Signals are enumerated since 00 with a prefix letter to indicate which element g
 
 The RNA allocates signals close to the buffer stops: 
 
--- Stop: *T01, T03, T05 and T07*
+-- Stop: *T01*
 
--- Departure: *T02, T04, T06 and T08*
+-- Departure: *T02*
 
-The RNA allocates signals close to the line borders. In this example not exists line borders, therefor any signal is crated for this element.  
+The RNA allocates signals close to the line borders: 
+
+- Departure signals: *L03, L04, L05 and L06* are assigned close to every line border that belongs to a netElement whose track is longer than a configurable fixed length. 
 
 **Signals generated due to line borders(L),buffer stops(T) and rail joints (J):**
 
 ![Figure 5](Figure2.svg "Figure 5")
 
-The algorithm assigns signalling at the beginning and end of each track, as shown in Figure 5. 
-
--- Departure: *J09, J10, J11, J12, J13, J14, J15, J16 , J17, J18, J19 and J20*
+The algorithm not assigns signalling at the beginning and end of each track, because this network not have rail joints as shown in Figure 5. 
 
 **Signals generated due to line borders(L),buffer stops(T),rail joints (J), platforms(P) and level crossings(X):**
 
+![Figure 6](Figure3.svg "Figure 6")
+
 Notice that RNA can be configured to avoid adding this signalling when the level crossing and the platform are close together and therefore the signalling between them is not necessary.
 
-In this example not exists platforms and level crossings, therefor any signal is crated for this element.
+In Figure 6 shown the signals:
 
-![Figure 6](Figure3.svg "Figure 6")
+- Generated due level corrsings: *X07 and X08*.
+
+It is necessary to introduce signals before the train reaches the level crossing as explained in Algorithm 5.
+
+- Generated due platforms: *P09, P10, P11 and P12*.
+
+A railway platform is where the passengers wait for trains to arrive and depart. It is necessary to have a departure signal
+after the platform. This is implemented using Algorithm 6.
 
 **Signals generated due to line borders(L),buffer stops(T),rail joints (J), platforms(P),level crossings(X) and switches(S,H,C,B):**
 
@@ -103,87 +136,54 @@ The signals for switches are named based on the point they want to protect: S fo
 
 Signals generated for
 
-- Sw01:*S23, H24, C25 and B26*.
-- Sw02:*S27, H28, B22 and C21*.
+- Sw01:*C13, B14, S18 and H19*.
+- Sw02:*C17, S15 and H16*.
 - Sw03:*C20, S21 and H22*.
-- Sw04:*C20, S21 and H22*.
 
+### F. Simplify signalling
 
+The signal simplification process used by RNA relies on two main principles: i) vertical inheritance: related to signalling in topologies where a second switch starts at the same netElement where a previous switch had a detour, and ii) horizontal inheritance: related to signalling of elements that are very close to each other (i.e. railway crossings and platforms, as discussed above). These algorithms might combine signals or move signals farther away before any CDL zone to give train drivers an earlier warning notice than in the original layout (P3, P4, P7).
 
+After generating all the signalling, a simplification should be made to keep only the appropriate signals, as shown in Figure 8:
 
+![Figure 8](2_B.png "Figure 8")
 
+### G. Export a resulting railway layout description
 
+Once the signalling is generated and simplified, it is necessary to establish the railway routes to create the railway interlocking table. A railway route is the simplest path between two consecutive signals in the same direction, using the same tracks. 
 
+#### Original table
 
-
-
-
-
-
-
-Signals generated due to line borders(L) and buffer stops(T):
-![alt text](Figure1.svg)
-Signals generated due to line borders(L),buffer stops(T) and rail joints (J):
-![alt text](Figure2.svg)
-Signals generated due to line borders(L),buffer stops(T),rail joints (J), platforms(P) and level crossings(X):
-![alt text](Figure3.svg)
-Signals generated due to line borders(L),buffer stops(T),rail joints (J), platforms(P),level crossings(X) and switches(S,H,C,B):
-![alt text](Figure4.svg)
-Simplified signalling:
-![alt text](5_B.png)
-
-## Original table
-
-![alt text](5_A.png)
+![alt text](2_A.png)
 
 | Route  | Entry | Exit | Switches | Platforms | Crossings | netElements |
 |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |
-| R_01 |  S01  |  S06  | Sw01_N  | - | - | ne01-ne02 |
-| R_02 |  S05  |  S13  | Sw01_N  | - | - | ne02-ne01 |
-| R_03 |  S01  |  S03  | Sw01_R  | - | - | ne01-ne03 |
-| R_04 |  S04  |  S13  | Sw01_R  | - | - | ne03-ne01 |
-| R_05 |  S02  |  S04  | Sw02_R  | - | - | ne04-ne02 |
-| R_06 |  S06  |  S15  | Sw02_N  | - | - | ne02-ne04 |
-| R_07 |  S02  |  S05  | Sw02_N  | - | - | ne04-ne03 |
-| R_08 |  S03  |  S15  | Sw02_R  | - | - | ne03-ne04 |
-| R_09 |  S07  |  S11  | Sw03_N  | - | - | ne05-ne06 |
-| R_10 |  S10  |  S14  | Sw03_N  | - | - | ne06-ne05 |
-| R_11 |  S07  |  S09  | Sw03_R  | - | - | ne05-ne07 |
-| R_12 |  S08  |  S14  | Sw03_R  | - | - | ne07-ne05 |
-| R_13 |  S12  |  S10  | Sw04_N  | - | - | ne08-ne06 |
-| R_14 |  S11  |  S16  | Sw04_N  | - | - | ne06-ne08 |
-| R_15 |  S12  |  S08  | Sw04_R  | - | - | ne08-ne07 |
-| R_16 |  S09  |  S16  | Sw04_R  | - | - | ne07-ne08 |
+| R_01 |  S07  |  S11  | Sw01_N  | - | - | ne14-ne16 |
+| R_02 |  S08  |  S11  | Sw01_R  | - | - | ne15-ne16 |
+| R_03 |  S09  |  S12  | Sw02_N  | - | - | ne18-ne16 |
+| R_04 |  S10  |  S13  | Sw03_N  | - | - | ne20-ne19 |
+| R_05 |  S10  |  S12  | Sw03_R + Sw02_R  | - | - | ne20-ne17-ne16  |
 
-## Generated table
+#### Generated table
 
-![alt text](5_B.png)
+![alt text](2_B.png)
 
 | Route  | Entry | Exit | Switches | Platforms | Crossings | netElements |
 |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |
-| R_01 |  S23  |  C25  | Sw01_N | - | - | ne01-ne02 |
-| R_02 |  C21  |  T01  | Sw01_N | - | - | ne02-ne01 |
-| R_03 |  S23  |  J11  | Sw01_R | - | - | ne01-ne03 |
-| R_04 |  J12  |  T01  | Sw01_R | - | - | ne03-ne01 |
-| R_05 |  S27  |  C21  | Sw02_N | - | - | ne04-ne02 |
-| R_06 |  C25  |  T03  | Sw02_N | - | - | ne02-ne04 |
-| R_07 |  S27  |  J12  | Sw02_R | - | - | ne04-ne03 |
-| R_08 |  J11  |  T04  | Sw02_R | - | - | ne03-ne04 |
-| R_09 |  S31  |  C33  | Sw03_N | - | - | ne05-ne06 |
-| R_10 |  C29  |  T05  | Sw03_N | - | - | ne06-ne05 |
-| R_11 |  S31  |  J17  | Sw03_R | - | - | ne05-ne07 |
-| R_12 |  J18  |  T05  | Sw03_R | - | - | ne07-ne05 |
-| R_13 |  S35  |  C29  | Sw04_N | - | - | ne08-ne06 |
-| R_14 |  C33  |  T07  | Sw04_N | - | - | ne06-ne08 |
-| R_15 |  S35  |  J18  | Sw04_R | - | - | ne08-ne07 |
-| R_16 |  J17  |  T07  | Sw04_R | - | - | ne07-ne08 |
+| R_01 |  P10  |  S18  | Sw01_N  | - | - | ne14-ne16 |
+| R_02 |  B14  |  S18  | Sw01_R  | - | - | ne15-ne16 |
+| R_03 |  P11  |  S15  | Sw02_N  | - | - | ne18-ne16 |
+| R_04 |  S21  |  T01  | Sw03_N  | - | - | ne20-ne19 |
+| R_05 |  S21  |  S15  | Sw03_R + Sw02_R | - | - | ne20-ne17-ne16 |
 
 Extra routes considering bidirectional tracks:
+
 | Route  | Entry | Exit | Switches | Platforms | Crossings | netElements |
 |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |
-| R_17 |  T02  |  S23  | - | - | - | ne01 |
-| R_18 |  T04  |  S27  | - | - | - | ne04 |
-| R_19 |  T06  |  S31  | - | - | - | ne05 |
-| R_20 |  T08  |  S35  | - | - | - | ne08 |
+| R_06 |  S15  |  P09  | Sw01_N  | - | Lc01 | ne16-ne14 |
+| R_07 |  S15  |  L04  | Sw01_R  | - | Lc01 | ne16-ne15 |
+| R_08 |  S18  |  P12  | Sw02_N  | - | Lc01 | ne16-ne18 |
+| R_09 |  T02  |  L06  | SW03_N  | -  | - | ne19-ne20 |
+| R_10 |  S18  |  L06  | Sw02_R + Sw03_R  | - | Lc01 | ne16-ne17-ne20 |
 
-Routes 1 to 16 are the same in both interlocking tables, but RNA considers a departure signal is necessary close to buffer stops to allow trains to start moving. This authority could be delegated on signals S23,S31,S27 and S35 but they are far away their respective buffer stops. This extra four signals add four more routes to move the train from each buffer stop prior to every switch. It does not affect safety but it adds an extra step before a critical action, increasing safety.
+Routes 1 to 5 are the same in both interlocking tables, but RNA considers tracks as bidirectional while the original layout has only one direction per track. Routes 6 to 10 are the opposite of routes 1 to 5. It does not affect safety, RNA always considers every possible route in the layout. What is more, departure signal are considered for line borders and buffer stops for extra protection.

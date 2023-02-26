@@ -101,8 +101,7 @@ It is necessary to introduce signals before the train reaches the level crossing
 
 - Generated due platforms: *P09, P10, P11 and P12*.
 
-A railway platform is where the passengers wait for trains to arrive and depart. It is necessary to have a departure signal
-after the platform. This is implemented using Algorithm 6.
+A railway platform is where the passengers wait for trains to arrive and depart. It is necessary to have a departure signal after the platform. This is implemented using Algorithm 6.
 
 **Signals generated due to line borders(L),buffer stops(T),rail joints (J), platforms(P),level crossings(X) and switches(S,H,C,B):**
 
