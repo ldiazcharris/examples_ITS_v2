@@ -485,13 +485,13 @@
     <text id="svg_401" font-family="Arial" x="0" fill="#e9460d" font-style="normal" font-weight="400" font-size="45" y="40" xml:space="preserve">Exported by RaIL - AiD  1.1.9, a NEAT product - https://www.rail-aid.com/</text>
    </g>
    <text font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Asap'" font-size="24" id="svg_404" y="337.92616" x="794.24706" stroke-width="0" stroke="#000" fill="#CE7975">B14</text>
-   <text style="cursor: move;" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Asap'" font-size="24" id="svg_405" y="193.94138" x="738.25298" stroke-width="0" stroke="#000" fill="#CE7975">C13</text>
+   <text font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Asap'" font-size="24" id="svg_405" y="193.94138" x="738.25298" stroke-width="0" stroke="#000" fill="#CE7975">C13</text>
    <text font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Asap'" font-size="24" id="svg_406" y="199.94075" x="1214.20266" stroke-width="0" stroke="#000" fill="#CE7975">H19</text>
    <text font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Asap'" font-size="24" id="svg_407" y="203.94033" x="1130.21154" stroke-width="0" stroke="#000" fill="#CE7975">S18</text>
    <text font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Asap'" font-size="24" id="svg_408" y="329.927" x="1554.1667" stroke-width="0" stroke="#000" fill="#CE7975">H16</text>
    <text font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Asap'" font-size="24" id="svg_409" y="327.92721" x="1638.15782" stroke-width="0" stroke="#000" fill="#CE7975">S15</text>
-   <text style="cursor: move;" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Asap'" font-size="24" id="svg_410" y="353.92447" x="1962.12356" stroke-width="0" stroke="#000" fill="#CE7975">C20</text>
-   <text style="cursor: move;" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Asap'" font-size="24" id="svg_411" y="327.92721" x="2466.07025" stroke-width="0" stroke="#000" fill="#CE7975">C17</text>
+   <text font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Asap'" font-size="24" id="svg_410" y="353.92447" x="1962.12356" stroke-width="0" stroke="#000" fill="#CE7975">C20</text>
+   <text font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Asap'" font-size="24" id="svg_411" y="327.92721" x="2466.07025" stroke-width="0" stroke="#000" fill="#CE7975">C17</text>
    <text font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Asap'" font-size="24" id="svg_412" y="479.91114" x="2642.05171" stroke-width="0" stroke="#000" fill="#CE7975">H22</text>
    <text font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Asap'" font-size="24" id="svg_413" y="481.91093" x="2736.04177" stroke-width="0" stroke="#000" fill="#CE7975">S21</text>
   </g>
