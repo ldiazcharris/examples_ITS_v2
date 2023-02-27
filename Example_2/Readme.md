@@ -204,7 +204,7 @@ After generating all the signalling, a simplification should be made to keep onl
 
 Once the signalling is generated and simplified, it is necessary to establish the railway routes to create the railway interlocking table. A railway route is the simplest path between two consecutive signals in the same direction, using the same tracks.
 
-To obtain the table of routes it's necesary to open the archive generated for this example: "Example_2_B.railml" (if the user keep the names provided by this repository) using Rail-AID software, as shown in Figure 16.
+To obtain the table of routes it's necessary to open the archive generated for this example: "Example_2_B.railml" (if the user keep the names provided by this repository) using Rail-AID software, as shown in Figure 16.
 
 ![Figure 16](import_rail_aid_1.png "Figure 16")
 ![Figure 16](import_rail_aid_2.png "Figure 16")
