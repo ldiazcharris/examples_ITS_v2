@@ -58,13 +58,13 @@ Reading .railML file
 Creating railML object
 Analysing railML object
  Analysing graph
-ne14 [-1521, 450] [-560, 450] True >> False
-ne15 [-1521, 300] [-560, 450] True >> False
-ne16 [-560, 450] [516, 450] True >> False
-ne17 [516, 450] [666, 300] True >> False
-ne18 [516, 450] [1521, 450] True >> False
-ne19 [666, 300] [28, 300] False << True
-ne20 [666, 300] [1521, 300] True >> False
+ne14 [-1521, 450] [-560, 450] >>
+ne15 [-1521, 300] [-560, 450] >>
+ne16 [-560, 450] [516, 450] >>
+ne17 [516, 450] [666, 300] >>
+ne18 [516, 450] [1521, 450] >>
+ne19 [666, 300] [28, 300] <<
+ne20 [666, 300] [1521, 300] >>
  The network is connected
 ~~~
 
@@ -206,6 +206,8 @@ After generating all the signalling, a simplification should be made to keep onl
 
 Once the signalling is generated and simplified, it is necessary to establish the railway routes to create the railway interlocking table. A railway route is the simplest path between two consecutive signals in the same direction, using the same tracks.
 
+#### G.1. Obtaining table in Rail-AID
+
 To obtain the table of routes is necessary to open the archive generated for this example: "Example_2_B.railml" (if the user keeps the names provided by this repository) using Rail-AID software, as shown in Figure 16.
 
 ![Figure 16](import_rail_aid_1.png "Figure 16")
@@ -227,7 +229,7 @@ Then Rail-AID will display the table of routes for this network. It is shown in 
 ![Figure 19](import_rail_aid_5.png "Figure 19")
 *Figure 19. Routes in Rail-AID*
 
-#### Original table
+#### G.2. Original table
 
 The original example has the following structure, signalling and routes designed for experts, following the RailMl standard.
 
@@ -242,11 +244,12 @@ The original example has the following structure, signalling and routes designed
 | R_04 |  S10  |  S13  | Sw03_N  | - | - | ne20-ne19 |
 | R_05 |  S10  |  S12  | Sw03_R + Sw02_R  | - | - | ne20-ne17-ne16  |
 
-#### Generated table
+#### G.3. Generated table
 
 The example analysed by RNA and the approach of this work has the following structure, signalling and routes, which are the result of an automatic process and also follow the RailMl standard.
 
 ![alt text](2_B.png)
+*Figure 21. Generate table through RNA railway generate signalling*
 
 | Route  | Entry | Exit | Switches | Platforms | Crossings | netElements |
 |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |
@@ -267,6 +270,14 @@ Extra routes considering bidirectional tracks:
 | R_10 |  S18  |  L06  | Sw02_R + Sw03_R  | - | Lc01 | ne16-ne17-ne20 |
 
 Routes 1 to 5 are the same in both interlocking tables, but RNA considers tracks as bidirectional, while the original layout has only one direction per track. Routes 6 to 10 are the opposite of routes 1 to 5. So it does not affect safety, RNA always considers every possible route in the layout. Moreover, departure signals are considered for line borders and buffer stops for extra protection.
+
+For obtaining an analysis which only includes a one direction of a railway operation, should be mismark the option in the program. Like Figure 22 and Figure 21. To obtain the tables, you have to follow the steps explained in G.1.
+
+![Figure 21](one_direction_marked.png "Figure 21")
+*Figure 21. Produce routes considering one directional tracks*
+
+![Figure 22](one_direction_mismarked.png "Figure 22")
+*Figure 22. Produce routes considering bidirectional tracks*
 
 ## References
 
