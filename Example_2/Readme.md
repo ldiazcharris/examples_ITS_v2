@@ -50,7 +50,7 @@ This step allows to determine that the provided file's network connections are c
 
 In [1] in section "II. RAILWAY NETWORK ANALYZER DESIGN" in literal B, it can see Algorithm 1, that explain the process to analyses the network.
 
-The result of this step is the otput console:
+The result of this step is show in Console Output 1:
 
 ~~~
 #################### Starting Railway Network Analyzer ####################
@@ -129,7 +129,7 @@ The RNA allocates signals close to the line borders:
 
 - Departure signals: *L03, L04, L05 and L06* are assigned close to every line border that belongs to a netElement whose track is longer than a configurable fixed length.
 
-![Figure 7](Figure1.svg "Figure 7")
+![Figure 7](Figure1.png "Figure 7")
 *Figure 7.*
 
 **Signals generated due to line borders(L),buffer stops(T) and rail joints (J):**
@@ -167,7 +167,7 @@ It is necessary to introduce signals before the train reaches the level crossing
 
 A railway platform is where the passengers wait for trains to arrive and depart. It is necessary to have a departure signal after the platform. This is implemented using Algorithm 6 explained in [1] section "III. SIGNALLING GENERATION".
 
-![Figure 11](Figure3.svg "Figure 11")
+![Figure 11](Figure3.png "Figure 11")
 *Figure 11.*
 
 **Signals generated due to line borders(L),buffer stops(T),rail joints (J), platforms(P),level crossings(X) and switches(S,H,C,B):**
@@ -185,7 +185,7 @@ Signals generated for (in red letters, added signals are shown):
 - Sw02:*C17, S15 and H16*.
 - Sw03:*C20, S21 and H22*.
 
-![Figure 13](Figure4.svg "Figure 13")
+![Figure 13](Figure4.png "Figure 13")
 *Figure 13.*
 
 ### F. Simplify signalling
