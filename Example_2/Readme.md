@@ -4,7 +4,7 @@
 
 Name: SimpleExample.railAID
 
-This example was mentioned in the manuscript titled: "Automatic Railway Signalling Generation for Railways Systems Described on Railway Markup Language (railML)". Henceforth, when we refer to the manuscript, we will do it as [1].
+This example is mentioned in the manuscript titled: "Automatic Railway Signalling Generation for Railways Systems Described on Railway Markup Language (railML)". Henceforth, when we refer to the manuscript, we will do it as [1].
 
 ## Analysis principles
 
@@ -40,7 +40,7 @@ After having installed the RNA program according to the steps shown in the the s
 
 The necessary information to define the graph network is distributed across several sections of the railML file, specifically inside netElements (nodes) and netRelations (edges) items found in the class Infrastructure/Topology as described in [1].
 
-Figure 2 shows the railway network without signalling. The user will need the Design4Rail Horizon Software Suite Track Planner application and import the archive "Example_2.railml" to visualise the railway network for this example. 
+Figure 2 shows the railway network without signalling. The user will need the Design4Rail Horizon Software Suite Track Planner application and import the archive "Example_2.railml" to visualise the railway network used in this example. 
 
 For further information about the Design4Rail Horizon Software Suite and the Track Planner application, please refer to [Official web page of Design4Rail](https://design4rail.com/service/d4rhorizon/#section-downloadHorizon).
 
@@ -52,7 +52,7 @@ For a detailed explanation about importing railML files, go to section [G.1](#g1
 
 ### B. Define a graph network to associate the railway elements
 
-This step allows determining that the provided file's network connections are consistent. It also allows verifying the address, position, and interconnection of each node in the network.
+This step allows determining the consistency of the network connections provided in the RailML file, through the determination of the direction, position, and interconnection of each of the nodes of the given railway network.
 
 In [1], in the section "II. RAILWAY NETWORK ANALYZER DESIGN" in literal B, we see Algorithm 1, which explains the network analysis process.
 
@@ -76,11 +76,11 @@ ne20 [666, 300] [1521, 300] >>
 
 *Console Output 1. Step B railway elements.*
 
-In this example, the Console Output 1 shows that the program can identify the nodes and their directions. Consol Output 1 has, for example, this line: ne16 [-560, 450] [516, 450] >>, it indicates the name of the netElement (ne16), the position (origin [-560, 450] and end point [516, 450]) of the net element, and the direction (>>, at right in this case, but in other example it could have been at left: <<). If compare this Consol Output 1 with Figure 2, and analysing each "netElement", all elements are coincident. The same analysis for: ne14, ne15, ne17, ne18, ne19 and ne20.
+In this example, the Console Output 1 shows that the program can identify the nodes and their directions. Consol Output 1 has, for example, this line: ne16 [-560, 450] [516, 450] >>, it indicates the name of the netElement (ne16), the position (origin [-560, 450] and end point [516, 450]) of the net element, and the direction (>>, at right in this case, but in other example it could have been at left: <<). If compare this Consol Output 1 with Figure 2, and analysing each "netElement", all elements are coincident. The same analysis stands for: ne14, ne15, ne17, ne18, ne19 and ne20.
 
 ### C and D. Infrastructure analysis and CDL zones detection
 
-The process of analysing the infrastructure and detecting CDL zones produces one result: identifying the existence and position of each infrastructure element in the network: platforms, curves, level crossings,  buffer stops, derailers, lines,  operational points, signals, switches, tracks and detection elements (axle counters, rail joints and track circuits).
+The process of analysing the infrastructure and detecting CDL zones allows identifying the position of each infrastructure element in the network: platforms, curves, level crossings, buffer stops, derailers, lines, operational points, signals, switches, tracks and detection elements (axle counters, rail joints and track circuits).
 
 In section "II. RAILWAY NETWORK ANALYSER DESIGN" literal C of [1], it is shown Algorithm 2, which explains the process of analysing the network; and in the same section but in literal D, it is explained the process used to detect CDL zones.
 
@@ -103,7 +103,7 @@ Analysing infrastructure --> Infrastructure.RNA
 
 *Figure 3. Infrastructure analysis and CDL zones detection: GUI Output.*
 
-Figure 4 shows these elements.
+All these identified elements are shown in Figure 4.
 
 ![Figure 4](step_C_and_D_graphic.png "Figure 4")
 
@@ -111,17 +111,17 @@ Figure 4 shows these elements.
 
 ### E. Generate signalling
 
-To obtain an analysis for each network element in the program configurations (view Figure 5), select only the options you want.
+To obtain an analysis for each network element in the program configurations, select only the options you want, as shown in Figure 5.
 
 ![Figure 5](config_options.png "Figure 5")
 
 *Figure 5. Configuration options of RNA.*
 
-Below you will find the sequence of configurations used to analyze, step by step, the railway in this example.
+Below, in subsections E.1, E.2, E.3, and E.4, you will find the sequence of configurations used to analyze, step by step, the railway in this example.
 
 #### E.1. Signals generated due to line borders(L) and buffer stops(T)
 
-Figure 6 shows the configuration of the RNA GUI application needed for this step of analysis.
+The configuration of the RNA GUI application needed for this step of the analysis is shown in Figure 6.
 
 ![Figure 6](config_1.png "Figure 6")
 
@@ -147,13 +147,13 @@ The RNA allocates signals close to the line borders. RNA allocates departure sig
 
 The signals for rail joints are named J and have a consecutive number of signals.
 
-Figure 8 shows the configuration of the RNA GUI application needed for this step of analysis.
+The configuration of the RNA GUI application needed for this step of the analysis is shown in Figure 8.
 
 ![Figure 8](config_2.png "Figure 8")
 
 *Figure 8. Configuring RNA to obtain signals for line borders(L), buffer stops(T) and rail joints (J).*
 
-The algorithm does not assign signalling at the beginning and end of each track because this network does not have rail joints as shown in Figure 9.
+The algorithm does not assign signalling at the beginning and the ending of each track because this network does not have rail joints as shown in Figure 9.
 
 ![Figure 9](Figure2.png "Figure 9")
 
@@ -163,19 +163,19 @@ The algorithm does not assign signalling at the beginning and end of each track 
 
 The signals for platforms are named P, and signals for level crossings are named X. A consecutive number of signals is assigned for each type of signalling.
 
-Figure 10 shows the configuration of the RNA GUI application needed for this step of analysis.
+The configuration of the RNA GUI application needed for this step of the analysis is shown in Figure 10.
 
 ![Figure 10](config_3.png "Figure 10")
 
 *Figure 10. Configuring RNA to obtain signals for line borders(L),buffer stops(T),rail joints (J), platforms(P) and level crossings(X).*
 
-Notice that RNA can be configured to avoid adding this signalling when the level crossing and the platform are close together; therefore, the signalling between them is unnecessary. However, this configuration is not accessible by the end user, since it is a special parameter in the RNA source code. 
+Notice that RNA can be configured to avoid adding duplicate signals when the level crossing and the platform are close together, as discussed in [1], and therefore, the signalling between them is unnecessary. However, this configuration is not accessible by the end user, since it is a special parameter in the RNA source code. 
 
 It is necessary to introduce signals before the train reaches the level crossing as explained in Algorithm 5, explained in [1] section "III. SIGNALLING GENERATION".
 
 A railway platform is where the passengers wait for trains to arrive and depart. Therefore, it is necessary to have a departure signal after the platform. This logic is implemented using Algorithm 6, explained in [1] section "III. SIGNALLING GENERATION".
 
-Figure 11 shows (in red letters) the signals Generated due level crossings and platforms.
+In red letters, the signals Generated due level crossings and platforms are shown in Figure 11.
 
 ![Figure 11](Figure3.png "Figure 11")
 
@@ -183,17 +183,15 @@ Figure 11 shows (in red letters) the signals Generated due level crossings and p
 
 #### E.4. Signals generated due to line borders(L),buffer stops(T),rail joints (J), platforms(P),level crossings(X) and switches(S,H,C,B)
 
-Figure 6 shows the configuration of the RNA GUI application needed for this step of analysis.
+The configuration of the RNA GUI application needed for this step of the analysis is shown in Figure 12.
 
 ![Figure 12](config_4.png "Figure 12")
 
 *Figure 12. Configuring RNA to obtain signals for line borders(L),buffer stops(T),rail joints (J), platforms(P),level crossings(X) and switches(S,H,C,B).*
 
-The signals for switches are named based on the point they want to protect: S for Starting branch, C for the Continue branch and B for the Detour branch. However, other signals named with H are not explicitly protecting any of the three points switches have.
+The signals for switches are named based on the point they want to protect: S for Starting branch, C for the Continue branch and B for the Detour branch. There are also signals whose name starts with H that are not explicitly protecting the starting branch, the continue branch or the detour branch of a switch. These H signals are explained in [1] section "III. SIGNALLING GENERATION" in literal E, where a manoeuvre signal numbered with H is always added plus the corresponding numbering sequence by Algorithm 7. This manoeuvre signal always accompanies the signal of the start branch (S) of the switch, and its function is to protect the railway elements that are after this signal (i.e. elements that are in the detour branch and in the continue branch).
 
-The Algorithm 7, explained in [1] section "III. SIGNALLING GENERATION" in literal E, a manoeuvre signal numbered with H is always added plus the corresponding numbering sequence. This manoeuvre signal that always accompanies the signal of the start branch (S) of the switch, and whose function is to protect the railway elements that are after this signal. That is, the elements that are in the detour branch and in the continue branch.
-
-Signals generated for (in red letters, added signals are shown):
+Signals generated for Example 2 are shown in red letters in Figure 13:
 
 - Sw01:*C13, B14, S18 and H19*.
 - Sw02:*C17, S15 and H16*.
@@ -207,34 +205,34 @@ Signals generated for (in red letters, added signals are shown):
 
 The signal simplification process used by RNA relies on two main principles: i) vertical inheritance and ii) horizontal inheritance. Both principles are explained in [1] in section "IV. SIGNALLING SIMPLIFICATION".
 
-To simplify signals is needed that, mark the configuration option "Simplify signals", as shown in Figure 14.
+To simplify signals mark the configuration option "Simplify signals", as shown in Figure 14.
 
 ![Figure 14](config_5.png "Figure 14")
 
 *Figure 14. Configuring RNA to simplify signalling.*
 
-After generating all the signalling, a simplification should be made to keep only the appropriate signals, as shown in Figure 15.
+After the simplification only the appropriate signals are kept, as shown in Figure 15.
 
 ![Figure 15](Figure5.png "Figure 15")
 
 *Figure 15. Signalling simplification.*
 
-Followin, explains the simplification process.
+The simplification process was carried out according to the process described in section IV. SIGNALLING SIMPLIFICATION of [1], as follows:
 
 - **Simplification by vertical inheritance**
 
-    Vertical inheritance was applied when the B signals of the Sw03 and Sw02 were moved to the signals H16 y H22, respectably. These signals B, apparently were not created, because of the RNA when analysing the switches, applying Algorithm 8 explained in section IV. SIGNALLING SIMPLIFICATION of [1], literal A.  
+    Vertical inheritance was applied when the B signals of the Sw03 and Sw02 were moved to the signals H16 y H22, respectively. These signals B, apparently were not created, because of the RNA when analysing the switches, applying Algorithm 8 explained in section IV. SIGNALLING SIMPLIFICATION of [1], literal A.  
 
 
 - **Simplification by horizontal inheritance**
 
-    The simplified signals due to horizontal inheritance are follows: L03, L05, X07, X08, C13, C17 and C20. Signal L03 was deleted due this was nearby of signal P09, and have the same direction and orientation. The same situation occurs between signals L05 and P12; between signals C17 and P11; and between signals C20 and T02. In all cases, is applied Algorithm 9 (described in section IV. SIGNALLING SIMPLIFICATION of [1]). This algorithm was designed to avoid collisions by considering nearby objects as one single object, and generating signals according to the leftmost and rightmost railway element in the new single object. 
+    The simplified signals due to horizontal inheritance are L03, L05, X07, X08, C13, C17 and C20. Signal L03 was deleted due this was nearby of signal P09, and have the same direction and orientation. The same situation occurs between signals L05 and P12; between signals C17 and P11; and between signals C20 and T02. In all cases, is applied Algorithm 9 (described in section IV. SIGNALLING SIMPLIFICATION of [1]). This algorithm was designed to group nearby objects as one single object, and generating signals according to the leftmost and rightmost railway element in the new single object. 
 
-    Finally, signals X08 and X09 were deleted due to horizontal inheritance between signals S18 and S15, respectably. In this case, the priority of S18 and S15 were superior, as explained in section IV. SIGNALLING SIMPLIFICATION of [1], literal B. 
+    Finally, signals X08 and X09 were deleted due to horizontal inheritance between signals S18 and S15, respectively. In this case, the priority of S18 and S15 were superior, as explained in section IV. SIGNALLING SIMPLIFICATION of [1], literal B.
 
 ### G. Export a resulting railway layout description
 
-Once the signalling is generated and simplified, it is necessary to establish the railway routes to create the railway interlocking table. A railway route is the simplest path between two consecutive signals in the same direction, using the same tracks.
+Once the signalling is generated, it is necessary to establish the railway routes to create the railway interlocking table. A railway route is the simplest path between two consecutive signals in the same direction, using the same tracks.
 
 <a name="G.1"></a>
 #### G.1. Obtaining table in Design4Rail
