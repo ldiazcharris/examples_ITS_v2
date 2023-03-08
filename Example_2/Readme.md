@@ -44,7 +44,7 @@ Figure 2 shows the railway network without signalling. The user will need the De
 
 For further information about the Design4Rail Horizon Software Suite and the Track Planner application, please refer to [Official web page of Design4Rail](https://design4rail.com/service/d4rhorizon/#section-downloadHorizon).
 
-For a detailed explanation about importing railML files, go to section [G.1](#g1-obtaining-table-in-design4rail) of this document. 
+For a detailed explanation about importing railML files, go to section [G.1](#g1-obtaining-the-interlocking-table-in-design4rail) of this document. 
 
 ![Figure 2](Figure0.png "Figure 2")
 
@@ -52,7 +52,7 @@ For a detailed explanation about importing railML files, go to section [G.1](#g1
 
 ### B. Define a graph network to associate the railway elements
 
-This step allows determining the consistency of the network connections provided in the RailML file, through the determination of the direction, position, and interconnection of each of the nodes of the given railway network.
+This step allows us to evaluate the consistency of the network connections provided in the RailML file, through the determination of the direction, position, and interconnection of each of the nodes of the given railway network.
 
 In [1], in the section "II. RAILWAY NETWORK ANALYZER DESIGN" in literal B, we see Algorithm 1, which explains the network analysis process.
 
@@ -235,9 +235,9 @@ The simplification process was carried out according to the process described in
 Once the signalling is generated, it is necessary to establish the railway routes to create the railway interlocking table. A railway route is the simplest path between two consecutive signals in the same direction, using the same tracks.
 
 <a name="G.1"></a>
-#### G.1. Obtaining table in Design4Rail
+#### G.1. Obtaining the interlocking table in Design4Rail
 
-To obtain the table of routes is necessary to open the archive generated for this example: "Example_2_B.railml" (if the user keeps the names provided by this repository) using Design4Rail software, as shown in Figure 16.
+To obtain the interlocking table is necessary to open the archive generated for this example: "Example_2_B.railml" (if the user keeps the names provided by this repository) using Design4Rail software, as shown in Figure 16.
 
 ![Figure 16](import_rail_aid_1.png "Figure 16")
 ![Figure 16](import_rail_aid_2.png "Figure 16")
@@ -256,19 +256,23 @@ In the menu "View" in Design4Rail Track Planner, select "Routes", as shown in Fi
 
 *Figure 18. View Routes*
 
-Then Design4Rail Track Planner will display the table of routes for this network. It is shown in Figure 19.
+Then Design4Rail Track Planner will display the interlocking table for this network. It is shown in Figure 19.
 
-![Figure 19](import_rail_aid_5.png "Figure 19")
+*Table 1. Routes in Design4Rail*
 
-*Figure 19. Routes in Design4Rail*
+![Table 1](import_rail_aid_5.png "Table 1")
 
-#### G.2. Original table
+#### G.2. Original interlocking table
 
-Figure 20 shows the structure of the original example. The signalling and the routes were designed by experts following the RailMl standard.
+Figure 19 shows the structure of the original example. 
 
-![Figure 20](2_A.png "Figure 20")
+![Figure 19](2_A.png "Figure 19")
 
-*Figure 20. Original example provided by RailMl*
+*Figure 19. Original example provided by RailMl*
+
+The signalling and the interlocking table were designed by experts following the RailMl standard, and are shown in Table 2.
+
+*Table 2. Original interlocking table for this example provided by RailMl*
 
 | Route  | Entry | Exit | Switches | Platforms | Crossings | netElements |
 |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |
@@ -278,13 +282,11 @@ Figure 20 shows the structure of the original example. The signalling and the ro
 | R_04 |  S10  |  S13  | Sw03_N  | - | - | ne20-ne19 |
 | R_05 |  S10  |  S12  | Sw03_R + Sw02_R  | - | - | ne20-ne17-ne16  |
 
-#### G.3. Generated table
+#### G.3. Generated interlocking table
 
-The example analysed by RNA and the approach of this work has the following structure, signalling and routes, which are the result of an automatic process and also follow the RailMl standard.
+The result of the automatic process carried by the RNA is the intelocking table shown in Table 3. This result is consistent with Table 1 shown in subsection [G.2.](#g2-original-interlocking-table) Original interlocking table.
 
-![Figure 21](2_B.png "Figure 21")
-
-*Figure 21. Generate table through RNA railway generate signalling*
+*Table 3. Interlocking table obtain through RNA when the option "One direction only" is marked.*
 
 | Route  | Entry | Exit | Switches | Platforms | Crossings | netElements |
 |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |
@@ -294,7 +296,15 @@ The example analysed by RNA and the approach of this work has the following stru
 | R_04 |  S21  |  T01  | Sw03_N  | - | - | ne20-ne19 |
 | R_05 |  S21  |  S15  | Sw03_R + Sw02_R | - | - | ne20-ne17-ne16 |
 
-Extra routes considering bidirectional tracks:
+RNA can consider tracks as bidirectional, while the original layout has only one direction per track. This feature is activated by mismarking the "One direction only" option, as shown in Figure 20.
+
+![Figure 20](one_direction_mismarked.png "Figure 20")
+
+*Figure 20. Produce routes considering bidirectional tracks*
+
+In this way the extra routes shown in Table 4 are obtained, where routes 6 to 10 are the opposite of routes 1 to 5. This extra routes does not affect safety. Moreover, departure signals are considered for line borders and buffer stops for extra protection.
+
+*Table 4. Interlocking table obtain through RNA when the option "One direction only" is mismarked.*
 
 | Route  | Entry | Exit | Switches | Platforms | Crossings | netElements |
 |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |
@@ -305,16 +315,6 @@ Extra routes considering bidirectional tracks:
 | R_10 |  S18  |  L06  | Sw02_R + Sw03_R  | - | Lc01 | ne16-ne17-ne20 |
 
 Routes 1 to 5 are the same in both interlocking tables, but RNA considers tracks as bidirectional, while the original layout has only one direction per track. Routes 6 to 10 are the opposite of routes 1 to 5. So it does not affect safety, RNA always considers every possible route in the layout. Moreover, departure signals are considered for line borders and buffer stops for extra protection.
-
-For obtaining an analysis which only includes a one direction of a railway operation, should be mismark the option in the program. Like Figure 21 and Figure 22. To obtain the tables, you have to follow the steps explained in [G.1](#g1-obtaining-table-in-design4rail).
-
-![Figure 21](one_direction_marked.png "Figure 21")
-
-*Figure 21. Produce routes considering one directional tracks*
-
-![Figure 22](one_direction_mismarked.png "Figure 22")
-
-*Figure 22. Produce routes considering bidirectional tracks*
 
 ## References
 
