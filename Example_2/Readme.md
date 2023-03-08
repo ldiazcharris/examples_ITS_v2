@@ -262,6 +262,12 @@ Then Design4Rail Track Planner will display the interlocking table for this netw
 
 ![Table 1](import_rail_aid_5.png "Table 1")
 
+***Note***
+
+   Importing the .railml file by Design4Rail has one drawback: TrackPlanner considers all signals as having a single aspect. That is, when the RNA exports the railml file with the positioning of the signals (which can be from one or more aspects) the importer considers all these signals as a single aspect. This issue was notified to NEAT. Therefore, when the user wants to display the interlock table, he should use the procedure shown in section [G.1.](#g1-obtaining-the-interlocking-table-in-design4rail)
+
+   To get around this drawback, the RNA creates N semaphores of one aspect and displays them one after the other, instead of creating one semaphore of N aspects. The foregoing is only to provide a solution to the stand alone version of the RNA.
+
 #### G.2. Original interlocking table
 
 Figure 19 shows the structure of the original example. 
