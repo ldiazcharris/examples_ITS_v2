@@ -169,7 +169,7 @@ The configuration of the RNA GUI application needed for this step of the analysi
 
 *Figure 10. Configuring RNA to obtain signals for line borders(L),buffer stops(T),rail joints (J), platforms(P) and level crossings(X).*
 
-Notice that RNA can be configured to avoid adding duplicate signals when the level crossing and the platform are close together, as discussed in [1], and therefore, the signalling between them is unnecessary. However, this configuration is not accessible by the end user, since it is a special parameter in the RNA source code. 
+Notice that RNA can be configured to avoid adding duplicate signals when the level crossing and the platform are close together, as discussed in [1], and therefore, the signalling between them is unnecessary. However, this configuration is a special parameter in the RNA. For furthermore information about this, go to section [G.3.1.2.](#g32-minimun-distance-parameter) 
 
 It is necessary to introduce signals before the train reaches the level crossing as explained in Algorithm 5, explained in [1] section "III. SIGNALLING GENERATION".
 
@@ -300,6 +300,8 @@ The result of the automatic process carried by the RNA is the intelocking table 
 | R_04 |  S21  |  T01  | Sw03_N  | - | - | ne20-ne19 |
 | R_05 |  S21  |  S15  | Sw03_R + Sw02_R | - | - | ne20-ne17-ne16 |
 
+#### G.3.1. One directional and bidirectional tracks
+
 RNA can consider tracks as bidirectional, while the original layout has only one direction per track. This feature is activated by mismarking the "One direction only" option, as shown in Figure 20.
 
 ![Figure 20](one_direction_mismarked.png "Figure 20")
@@ -320,9 +322,22 @@ In this way the extra routes shown in Table 4 are obtained, where routes 6 to 10
 
 Routes 1 to 5 are the same in both interlocking tables, but RNA considers tracks as bidirectional, while the original layout has only one direction per track. Routes 6 to 10 are the opposite of routes 1 to 5. So it does not affect safety, RNA always considers every possible route in the layout. Moreover, departure signals are considered for line borders and buffer stops for extra protection.
 
+#### G.3.2. Minimun distance parameter
+
+As explained in literal B of section "IV. SIGNALING SIMPLIFICATION" in [1], more than two railway elements can be combined if they were close enough. The threshold distance to determine if this combination must be done is a configuration parameter of RNA, named MIN_DISTANCE (minimum distance). As shown in Algorithms 8, 9, and 10 in [1], this parameter is essential to locate, relocate and simplify signals.
+
+Because of integrity software reasons, this parameter should be between 300 and 500. For default, this value is 300.
+
+Figure 21 shows the parameter configuration in the GUI of RNA. 
+
+![Figure 21](.png "Figure 21")
+
+*Figure 20. Minimum distance parameter configuration*
+
+
 ## References
 
-[1] M. N. Menendez, S. Germino, L. Díaz-Charris, and A. Lutenberg, Automatic Railway Signalling Generation for Railways Systems Described on Railway Markup Language (railML).
+[1] M. N. Menendez, S. Germino, L. Díaz-Charris, and A. Lutenberg, Automatic Railway Signalling Generation for Railways Systems Described on Railway Markup Language (railML). 
 
 ## Disclaimer
 
