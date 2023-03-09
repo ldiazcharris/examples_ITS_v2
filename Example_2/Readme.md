@@ -324,11 +324,7 @@ Routes 1 to 5 are the same in both interlocking tables, but RNA considers tracks
 
 #### G.3.2. Minimun distance parameter
 
-As explained in literal B of section "IV. SIGNALING SIMPLIFICATION" in [1], more than two railway elements can be combined if they were close enough. The threshold distance to determine if this combination must be done is a configuration parameter of RNA, named MIN_DISTANCE (minimum distance). As shown in Algorithms 8, 9, and 10 in [1], this parameter is essential to locate, relocate and simplify signals.
-
-Because of integrity software reasons, this parameter should be between 300 and 500. For default, this value is 300.
-
-Figure 21 shows the parameter configuration in the GUI of RNA. 
+As explained in literal B of section "IV. SIGNALING SIMPLIFICATION" in [1], more than two railway elements can be combined if they were close enough. The threshold distance to determine if this combination must be done is a configuration parameter of RNA, named MIN_DISTANCE (minimum distance). As shown in Algorithms 8, 9, and 10 in [1], this parameter is essential to locate, relocate and simplify signals. Because of integrity software reasons, this parameter should be between 300 and 500. For default, this value is 300. Figure 21 shows the parameter configuration in the GUI of RNA. 
 
 ![Figure 21](.png "Figure 21")
 
