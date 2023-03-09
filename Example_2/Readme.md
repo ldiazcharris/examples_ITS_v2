@@ -262,11 +262,9 @@ Then Design4Rail Track Planner will display the interlocking table for this netw
 
 ![Table 1](import_rail_aid_5.png "Table 1")
 
-***Note***
+### ***Note***
 
-   Importing the .railml file by Design4Rail has one drawback: TrackPlanner considers all signals as having a single aspect. That is, when the RNA exports the railml file with the positioning of the signals (which can be from one or more aspects) the importer considers all these signals as a single aspect. This issue was notified to NEAT. Therefore, when the user wants to display the interlock table, he should use the procedure shown in section [G.1.](#g1-obtaining-the-interlocking-table-in-design4rail)
-
-   To get around this drawback, the RNA creates N semaphores of one aspect and displays them one after the other, instead of creating one semaphore of N aspects. The foregoing is only to provide a solution to the stand alone version of the RNA.
+   When the RNA exports the railML file the Rail-AID software considers all these signals as a single aspect. This issue was notified by us to NEAT in March 2022, they acknowledged the notification, agreed that there is an error on their software and committed to fix this problem. However, this problem was never solved, and NEAT discontinued Rail-AID software (see the disclaimer below). To get around this issue, the RNA creates N semaphores of one aspect and displays them one after the other, instead of creating one semaphore of N aspects. As a consequence of having N semaphores of one aspect the interlocking table has more routes than the scenario where there is one semaphore of N aspects. Therefore, to get the appropriate interlocking table corresponding to one semaphore of N aspects, use the procedure shown in section [G.1.](#g1-obtaining-the-interlocking-table-in-design4rail)
 
 #### G.2. Original interlocking table
 
@@ -325,3 +323,7 @@ Routes 1 to 5 are the same in both interlocking tables, but RNA considers tracks
 ## References
 
 [1] M. N. Menendez, S. Germino, L. Díaz-Charris, and A. Lutenberg, Automatic Railway Signalling Generation for Railways Systems Described on Railway Markup Language (railML).
+
+## Disclaimer
+
+To carry out this research work, we used the software Rail-AID developed by NEAT, and provided to us on July 2021. However, NEAT no longer supports this software. They upgrade to a new software named Desgin4Rail TrackPlanner application, whose functionalities are essentially the same as Rail-AID. Because of this reason, we recommended in the manuscript and the development of the examples available in this repository, the use of Design4Rail TrackPlanner. Users are notified, that Rail-AID and Design4Rail are not free software; therefore, appropriate licenses should be purchased for use. A trial version is sufficient to open and visualize the layouts of examples 2, 5, 6 y 7. However, to open and visualize examples 1, 3 y 4 a license should be purchased.
