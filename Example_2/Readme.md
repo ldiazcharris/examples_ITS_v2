@@ -137,7 +137,7 @@ The RNA allocates signals close to the buffer stops:
 
 -- Departure: *T02*
 
-The RNA allocates signals close to the line borders. RNA allocates departure signals which are: *L03, L04, L05 and L06* assigned close to every line border that belongs to a netElement whose track is longer than a configurable fixed length.
+The RNA allocates signals close to the line borders. RNA allocates departure signals which are: *L03, L04, L05 and L06* assigned close to every line border that belongs to a netElement whose track is longer than a configurable fixed length. To configure this parameter, please see section [G.3.3](#g33-fixed-length-parameter).
 
 ![Figure 7](Figure1.png "Figure 7")
 
@@ -169,7 +169,7 @@ The configuration of the RNA GUI application needed for this step of the analysi
 
 *Figure 10. Configuring RNA to obtain signals for line borders(L),buffer stops(T),rail joints (J), platforms(P) and level crossings(X).*
 
-Notice that RNA can be configured to avoid adding duplicate signals when the level crossing and the platform are close together, as discussed in [[1]](#references), and therefore, the signalling between them is unnecessary. However, this configuration is a special parameter in RNA. For furthermore information about this, see section [G.3.1.2.](#g32-minimum-distance-parameter) 
+Notice that RNA can be configured to avoid adding duplicate signals when the level crossing and the platform are close together, as discussed in [[1]](#references), and therefore, the signalling between them is unnecessary. However, this configuration is a special parameter in RNA. For furthermore information about this, see section [G.3.2.](#g32-minimum-distance-parameter) 
 
 It is necessary to introduce signals before the train reaches the level crossing as explained in Algorithm 5, explained in [[1]](#references) section "III. SIGNALLING GENERATION".
 
@@ -332,8 +332,15 @@ As explained in literal B of section "IV. SIGNALING SIMPLIFICATION" in [[1]](#re
 
 ![Figure 21](minimum_distance_parameter.png "Figure 21")
 
-*Figure 20. Minimum distance parameter configuration*
+*Figure 21. Minimum distance parameter configuration*
 
+#### G.3.3. Fixed length parameter
+
+The fixed length parameter is necessary to allocate the departure signals, which maintains the trains in the network until the next network approves the movement. These signals allow trains to move outside the network without restrictions only if the track is not long enough (fixed length). RNA could easily be adapted to other criteria and regulations, thanks to this parameter. As shown in Algorithms 3, and 4 in [[1]](#references). Configuration of the fixed length parameter in RNA as shown in Figure 22. Because of integrity software reasons, this parameter should be between 300 and 500. For default, this value is 200. Figure 21 shows the parameter configuration in the GUI of RNA.
+
+![Figure 22](fixed_length_parameter.jpeg "Figure 22")
+
+*Figure 22. Fixed length parameter configuration*
 
 ## References
 
