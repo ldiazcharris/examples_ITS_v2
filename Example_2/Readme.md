@@ -336,7 +336,7 @@ As explained in literal B of section "IV. SIGNALING SIMPLIFICATION" in [[1]](#re
 
 #### G.3.3. Fixed length parameter
 
-The fixed length parameter is necessary to allocate the departure signals, which maintains the trains in the network until the next network approves the movement. These signals allow trains to move outside the network without restrictions only if the track is not long enough (fixed length). RNA could easily be adapted to other criteria and regulations, thanks to this parameter. As shown in Algorithms 3, and 4 in [[1]](#references). Configuration of the fixed length parameter in RNA as shown in Figure 22. Because of integrity software reasons, this parameter should be between 300 and 500. For default, this value is 200. Figure 21 shows the parameter configuration in the GUI of RNA.
+The fixed length parameter is necessary to allocate the departure signals, which maintains the trains in the network until the next network approves the movement. These signals allow trains to move outside the network without restrictions only if the track is not long enough (fixed length). RNA could easily be adapted to different criteria and regulations, thanks to this parameter. As shown in Algorithms 3, and 4 in [[1]](#references). Configuration of the fixed length parameter in RNA as shown in Figure 22. Because of integrity software reasons, this parameter should be between 300 and 500. For default, this value is 200. Figure 21 shows the parameter configuration in the GUI of RNA.
 
 ![Figure 22](fixed_length_parameter.jpeg "Figure 22")
 

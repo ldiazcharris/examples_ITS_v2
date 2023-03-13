@@ -1,21 +1,56 @@
 # Example_4
+
 ## Description
 Name: ERTMS_Test_Plant.RailAID
 
+This example is mentioned in the manuscript titled: "Automatic Railway Signalling Generation for Railways Systems Described on Railway Markup Language (railML)". Henceforth, when we refer to the manuscript, we will do it as [[1]](#references).
+
+## Analysis principles
+
+The signalling generation process used in this work was designed following signalling principles detailed in [[1]](#references) in the section "I. INTRODUCTION".
+
 ## Step by step
 
-Layout without signalling:
-![alt text](Figure0.svg)
-Signals generated due to line borders(L) and buffer stops(T):
-![alt text](Figure1.svg)
-Signals generated due to line borders(L),buffer stops(T) and rail joints (J):
-![alt text](Figure2.svg)
-Signals generated due to line borders(L),buffer stops(T),rail joints (J), platforms(P) and level crossings(X):
-![alt text](Figure3.svg)
-Signals generated due to line borders(L),buffer stops(T),rail joints (J), platforms(P),level crossings(X) and switches(S,H,C,B):
-![alt text](Figure4.svg)
-Simplified signalling:
-![alt text](4_B.png)
+The following is the general methodology or "step by step" followed for analysing a railway network with the approach of this work [[1]](#references).
+
+A. Import the railway layout description.
+
+B. Define a graph network to associate the railway elements.
+
+C. Infrastructure analysis
+
+D. Detect CDL zones.
+
+E. Generate signalling.
+
+F. Simplify signalling.
+
+G. Export a resulting railway layout description.
+
+Each step is explained below.
+
+### A. Import the railway layout description
+
+After having installed the RNA program according to the steps shown in the the section ["Usage"](https://github.com/GICSAFePhD/Layouts#usage), run the Python archive "main_GUI.py". This action produces the program output shown in Figure 1.
+
+![Figure 1](select_example.jpg "Figure 1")
+
+*Figure 1. Select example.*
+
+The necessary information to define the graph network is distributed across several sections of the railML file, specifically inside netElements (nodes) and netRelations (edges) items found in the class Infrastructure/Topology as described in [[1]](#references).
+
+Figure 2 shows the railway network without signalling. The user will need the Design4Rail Horizon Software Suite Track Planner application and import the archive "Example_2.railml" to visualise the railway network used in this example. 
+
+For further information about the Design4Rail Horizon Software Suite and the Track Planner application, please refer to [Official web page of Design4Rail](https://design4rail.com/service/d4rhorizon/#section-downloadHorizon).
+
+For a detailed explanation about importing railML files, go to section [G.1](#g1-obtaining-the-interlocking-table-in-design4rail) of this document. 
+
+![Figure 2](Figure0.jpg "Figure 2")
+
+*Figure 2. Railway network without signalling.*
+
+
+
 
 ## Original table
 
@@ -201,3 +236,7 @@ R_87  |  T10  |  T21  |  D21_N  |  -  |  -  |  ne465-ne133
 R_88  |  L30  |  X50  |  -  |  -  |  -  |  ne98
 R_89  |  T02  |  S71  |  -  |  -  |  -  |  ne991
 R_77  |  S91  |  C93  |  -  |  -  |  -  |  ne912
+
+## References
+
+[1] M. N. Menendez, S. Germino, L. Díaz-Charris, and A. Lutenberg, Automatic Railway Signalling Generation for Railways Systems Described on Railway Markup Language (railML). 
