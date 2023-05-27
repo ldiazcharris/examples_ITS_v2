@@ -147,11 +147,11 @@ In red letters, automatically added signals are shown.
 
 The RNA allocates signals close to the buffer stops:
 
--- Stop: *T01*
+-- Stop: *T01, T03, T05, T07 and T09*
 
--- Departure: *T02*
+-- Departure: *T02, T04, T06, T08 and T10*
 
-The RNA allocates signals close to the line borders. RNA allocates departure signals which are: *L03, L04, L05 and L06* assigned close to every line border that belongs to a netElement whose track is longer than a configurable fixed length.
+The RNA allocates signals close to the line borders. RNA allocates departure signals which are: *L11 and L12* assigned close to every line border that belongs to a netElement whose track is longer than a configurable fixed length.
 
 ![Figure 7](Figure1.jpg "Figure 7")
 
