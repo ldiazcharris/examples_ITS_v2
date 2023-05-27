@@ -167,7 +167,7 @@ The configuration of the RNA GUI application needed for this step of the analysi
 
 *Figure 8. Configuring RNA to obtain signals for line borders(L), buffer stops(T) and rail joints (J).*
 
-The algorithm does not assign signalling at the beginning and the ending of each track because this network does not have rail joints as shown in Figure 9.
+The RNA assign signalling at the beginning and the ending of each track: J13, J14, J15, J16, J17, J18, J19 and J20 as shown in Figure 9.
 
 ![Figure 9](Figure2.jpg "Figure 9")
 
