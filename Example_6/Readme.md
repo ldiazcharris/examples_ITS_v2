@@ -214,7 +214,7 @@ Signals generated for Example 6 are shown in red letters in Figure 13:
 - Sw08: *C35, S37, B36 and H38*.
 
 
-![Figure 13](Figure4.jpg "Figure 13")
+![Figure 13](Figure4.png "Figure 13")
 
 *Figure 13. Signals due to line borders(L),buffer stops(T),rail joints (J), platforms(P),level crossings(X) and switches(S,H,C,B).*
 
@@ -238,7 +238,7 @@ The simplification process was carried out according to the process described in
 
 - **Simplification by vertical inheritance**
 
-    Vertical inheritance was applied when the B signals of the Sw03 and Sw02 were moved to the signals H16 y H22, respectively. These signals B, apparently were not created, because of the RNA when analysing the switches, applying Algorithm 8 explained in section IV. SIGNALLING SIMPLIFICATION of [[1]](#references), literal A.  
+    Vertical inheritance was applied when the B signal of the Sw01 were moved to the signal C29 of Sw03. Also, when the signal S of Sw03 where moved to the signal H23 of Sw01. These signals, apparently were not created, because of the RNA when analysing the switches, applying Algorithm 8 explained in section IV. SIGNALLING SIMPLIFICATION of [[1]](#references), literal A. 
 
 - **Simplification by horizontal inheritance**
 
