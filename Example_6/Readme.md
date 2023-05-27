@@ -1,6 +1,6 @@
 # Example_6
 ## Description
-Name: SimpleExample.railAID
+Name: Complex switches I
 
 This example is mentioned in the manuscript titled: "Automatic Railway Signalling Generation for Railways Systems Described on Railway Markup Language (railML)". Henceforth, when we refer to the manuscript, we will do it as [[1]](#references).
 
