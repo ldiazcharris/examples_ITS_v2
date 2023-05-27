@@ -207,11 +207,14 @@ The signals for switches are named based on the point they want to protect: S fo
 
 Signals generated for Example 6 are shown in red letters in Figure 13:
 
-- Sw01:*C13, B14, S18 and H19*.
-- Sw02:*C17, S15 and H16*.
-- Sw03:*C20, S21 and H22*.
+- Sw01: *C21, S22 and H23*.
+- Sw02: *C25, S27, B26 and H28*.
+- Sw03: *C29, B30 and H24*.
+- Sw05: *C31, S33, B32 and H34*.
+- Sw08: *C35, S37, B36 and H38*.
 
-![Figure 13](Figure4.png "Figure 13")
+
+![Figure 13](Figure4.jpg "Figure 13")
 
 *Figure 13. Signals due to line borders(L),buffer stops(T),rail joints (J), platforms(P),level crossings(X) and switches(S,H,C,B).*
 
