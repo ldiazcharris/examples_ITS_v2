@@ -201,9 +201,9 @@ The signals for switches are named based on the point they want to protect: S fo
 
 Signals generated for Example 7 are shown in red letters in Figure 13:
 
-- Sw18: S14, C13, B18 and H15.
+- Sw18: S14, C13 and H15.
 - Sw14: C11, B12 and H16.
-- Sw19: S19, H20. C17.
+- Sw19: S19, H20, B18 and C17.
 
 ![Figure 13](Figure4.jpg "Figure 13")
 
