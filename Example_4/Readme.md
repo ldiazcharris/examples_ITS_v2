@@ -360,7 +360,7 @@ To simplify signals mark the configuration option "Simplify signals", as shown i
 
 After the simplification only the appropriate signals are kept, as shown in Figures 15A and 15B. The entire simplified sigals are shown in figure 15.
 
-![Figure 15](Figure5.jpg "Figure 15")
+![Figure 15](Figure5.png "Figure 15")
 
 *Figure 15. Signalling simplification.*
 
